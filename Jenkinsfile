@@ -30,9 +30,6 @@ pipeline {
                 dir('impl') {
                     sh "ant clean deploy"
                 }
-                dir('webapp') {
-                    sh "ant clean war"
-                }
             }
         }
         stage('Test') {
