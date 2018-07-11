@@ -60,7 +60,6 @@ pipeline {
                     echo "Generating a new docker image tag ${dockerImageTag}"
                     sh "export PYTHONIOENCODING=UTF-8; ${macawPublishCmd} service --tag ${dockerImageTag} ${serviceHome}"
                     sh "sleep 5s"
-                    sh "export PYTHONIOENCODING=UTF-8; ${macawPublishCmd} webapp --tag ${dockerImageTag} --name employeeDB-webapp --version 1.0.0 --file  ${serviceHome}/webapp/target/employeeDB.war --skip"
                 }
             }
         }
