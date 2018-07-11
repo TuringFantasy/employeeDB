@@ -7,14 +7,14 @@ pipeline {
         pollSCM('H/1 * * * *')
     }
     parameters {
-        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Should the tests be run?')
+        booleanParam(name: 'RUN_TESTS', defaultValue: false, description: 'Should the tests be run?')
         booleanParam(name: 'PUBLISH_DOCKER_IMAGE', defaultValue: true, description: 'Should a docker image with a new tag be created and published to a docker repo?')
         booleanParam(name: 'PROVISION_SERVICE', defaultValue: true, description: 'Should the service be provisioned to a Macaw platform runtime?')
         string(name: 'SERVICE_BLUEPRINT_ID', defaultValue:'76d5f8bb-d3b3-4af2-9e80-1cdfea134977', description: 'The blueprint id to use for provisioning the service. This will be used if service provisioning is enabled')
-        booleanParam(name: 'ROLLING_UPDATE', defaultValue: true, description: 'Will this be a rolling update or a new cluster needs to be provisioned')
+        booleanParam(name: 'ROLLING_UPDATE', defaultValue: false, description: 'Will this be a rolling update or a new cluster needs to be provisioned')
         booleanParam(name: 'SKIP_CERT_VERIFICATION', defaultValue: true, description: 'If set to true then any SSL certificate errors will be ignored. Typically, for self-signed certificates this param can be set to true')
         string(name: 'SERVICE_ID', defaultValue:'employeeDB', description: 'The service id of the service in blueprint that needs to be provisioned')
-        booleanParam(name: 'RUN_PYTHON_TESTS', defaultValue: true, description: 'Run Python Tests Post Provisioning')
+        booleanParam(name: 'RUN_PYTHON_TESTS', defaultValue: false, description: 'Run Python Tests Post Provisioning')
     }
     stages {
         stage('Checkout Source') {
@@ -29,9 +29,6 @@ pipeline {
                 }
                 dir('impl') {
                     sh "ant clean deploy"
-                }
-                dir('webapp') {
-                    sh "ant clean war"
                 }
             }
         }
@@ -63,7 +60,6 @@ pipeline {
                     echo "Generating a new docker image tag ${dockerImageTag}"
                     sh "export PYTHONIOENCODING=UTF-8; ${macawPublishCmd} service --tag ${dockerImageTag} ${serviceHome}"
                     sh "sleep 5s"
-                    sh "export PYTHONIOENCODING=UTF-8; ${macawPublishCmd} webapp --tag ${dockerImageTag} --name employeeDB-webapp --version 1.0.0 --file  ${serviceHome}/webapp/target/employeeDB.war --skip"
                 }
             }
         }
@@ -107,10 +103,5 @@ pipeline {
                 }
             }
         }        
-    }
-    post {
-        always {
-            junit 'impl/target/reports/**/*.xml'
-        }
     }
 }
