@@ -47,4 +47,9 @@ public class EmployeeDB implements com.cfx.service.api.Service, io.zolontech.ima
 	  }
     return employee;
   }
+
+	@Override
+	public String welcome() {
+		return "Welcome!";
+	}
 }
