@@ -1,0 +1,100 @@
+{
+    "service": {
+        "namespace": "io.zolontech.services",
+        "name": "employeeDB",
+        "version": "1.0.0",
+        "description": "Employee Service",
+        "domain-entities": {
+            "employee": {
+                "properties": {
+                    "employee-id": {
+                        "type": "string",
+                        "description": "Unique ID of the employee"
+                    },
+
+                    "first-name": {
+                        "type": "string",
+                        "description": "First Name of the employee"
+                    },
+
+                    "last-name": {
+                        "type": "string",
+                        "description": "Last Name of the employee"
+                    },
+
+                    "title": {
+                        "type": "string",
+                        "description": "Designation of the employee"
+                    },
+
+                    "address": {
+                        "type": "string",
+                        "description": "Address of the employee"
+                    },
+
+                    "phone": {
+                        "type": "string",
+                        "description": "Phone number of the employee"
+                    },
+
+                    "doe": {
+                        "type": "int64",
+                        "description": "Date of Employment of the employee"
+                    },
+
+                    "email-id": {
+                        "type": "string",
+                        "description": "Email ID of the employee"
+                    },
+
+                    "createdAt": {
+                        "type": "int64",
+                        "description": "The time in UTC milliseconds at which the employee was created"
+                    },
+
+                    "updatedAt": {
+                        "type": "int64",
+                        "description": "The time in UTC milliseconds at which the employee was created"
+                    }
+                }
+            }
+
+        },
+            "apis" : [
+                {
+                    "name" : "addEmployee",
+                    "description" : "Add an employee",
+                    "inputs": [
+                        {
+                            "name": "employee",
+                            "type": "employee"
+                        }
+                    ],
+                    "output" : {
+                        "type" : "string"
+                    }
+                },
+                {
+                    "name" : "getEmployeeById",
+                    "description" : "Returns an employee with the specified employee-id",
+                    "inputs": [
+                        {
+                            "name": "employee-id",
+                            "type": "employee"
+                        }
+                    ],
+                    "output" : {
+                        "type" : "employee"
+                    }
+                }
+            ],
+            "options" : {
+                "code-gen" : {
+                    "java" : {
+                        "package-name" : "io.zolontech.imagemanager"
+                    }
+                }
+
+            }
+    }
+}
