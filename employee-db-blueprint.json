@@ -26,15 +26,6 @@
    "maxQuantity": 8
   }
  ], 
- "webapps": [
-    {
-     "configDescriptors": [], 
-     "exposePorts": [], 
-     "id": "employeeDB-app", 
-     "volumes": [], 
-     "name": "employeeDB-app-1.0.0"
-    }
-  ], 
  "dependencies": [], 
  "deployment": {
   "order": [
