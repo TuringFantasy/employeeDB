@@ -4,7 +4,7 @@ pipeline {
     triggers {
         // poll the SCM every 1 minutes and trigger a build
         // if any new changes are present
-        pollSCM('H/2 * * * *')
+        pollSCM('* * * * *')
     }
     parameters {
         booleanParam(name: 'RUN_TESTS', defaultValue: false, description: 'Should the tests be run?')
