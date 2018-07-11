@@ -10,7 +10,7 @@ pipeline {
         booleanParam(name: 'RUN_TESTS', defaultValue: false, description: 'Should the tests be run?')
         booleanParam(name: 'PUBLISH_DOCKER_IMAGE', defaultValue: true, description: 'Should a docker image with a new tag be created and published to a docker repo?')
         booleanParam(name: 'PROVISION_SERVICE', defaultValue: true, description: 'Should the service be provisioned to a Macaw platform runtime?')
-        string(name: 'SERVICE_BLUEPRINT_ID', defaultValue:'76d5f8bb-d3b3-4af2-9e80-1cdfea134977', description: 'The blueprint id to use for provisioning the service. This will be used if service provisioning is enabled')
+        string(name: 'SERVICE_BLUEPRINT_ID', defaultValue:'7cad3169-f5d3-5a56-a6eb-338f623c9ea3', description: 'The blueprint id to use for provisioning the service. This will be used if service provisioning is enabled')
         booleanParam(name: 'ROLLING_UPDATE', defaultValue: false, description: 'Will this be a rolling update or a new cluster needs to be provisioned')
         booleanParam(name: 'SKIP_CERT_VERIFICATION', defaultValue: true, description: 'If set to true then any SSL certificate errors will be ignored. Typically, for self-signed certificates this param can be set to true')
         string(name: 'SERVICE_ID', defaultValue:'employeeDB', description: 'The service id of the service in blueprint that needs to be provisioned')

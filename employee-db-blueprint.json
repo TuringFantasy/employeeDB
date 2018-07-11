@@ -1,12 +1,12 @@
 {
- "id": "76d5f8bb-d3b3-4af2-9e80-1cdfea134977", 
- "name": "Employee DB", 
- "description": "A simple microserviceto store employee information", 
+ "id": "7cad3169-f5d3-5a56-a6eb-338f623c9ea3", 
+ "name": "Macaw Service Blueprint for Employee DB", 
+ "description": "Macaw Service Blueprint for Employee DB", 
  "category": "Macaw Services", 
  "tag": "MicroServices", 
  "icon": "microservices", 
  "published": {
-  "date": "2018-07-11T14:06:34.779499", 
+  "date": "2018-07-11T23:03:12.209536", 
   "organization": "macaw.io", 
   "user": "macaw"
  }, 
@@ -20,12 +20,13 @@
    "defaultQuantity": 1, 
    "service-name": "employeeDB", 
    "id": "employeeDB", 
-   "name": "employeeDB-v1.0.0", 
+   "name": "employeedb-v1.0.0", 
    "exposePorts": [], 
    "service-namespace": "io.zolontech.services", 
    "maxQuantity": 8
   }
  ], 
+ "webapps": [], 
  "dependencies": [], 
  "deployment": {
   "order": [
