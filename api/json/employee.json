@@ -80,7 +80,7 @@
                     "inputs": [
                         {
                             "name": "employee-id",
-                            "type": "employee"
+                            "type": "string"
                         }
                     ],
                     "output" : {

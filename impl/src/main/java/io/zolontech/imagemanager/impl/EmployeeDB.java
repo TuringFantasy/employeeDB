@@ -4,10 +4,19 @@
 package io.zolontech.imagemanager.impl;
 
 import java.lang.Override;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import io.zolontech.imagemanager.Employee;
 
 public class EmployeeDB implements com.cfx.service.api.Service, io.zolontech.imagemanager.EmployeeDB {
+
+  private Map<String, Employee> employees = null;
+	
   @Override
   public void initialize(com.cfx.service.api.config.Configuration config) throws com.cfx.service.api.ServiceException {
+	  employees = new HashMap<>();
   }
 
   @Override
@@ -20,13 +29,22 @@ public class EmployeeDB implements com.cfx.service.api.Service, io.zolontech.ima
 
   @Override
   public String addEmployee(io.zolontech.imagemanager.Employee employee) {
-    // TODO: Auto-generated code;
-    return null;
+	  if (employee.getEmployeeId() == null) {
+		  employee.setEmailId(UUID.randomUUID().toString());
+		  employees.put(employee.getEmployeeId(), employee);
+	  }
+	  else {
+		  throw new RuntimeException("Employee already exists with the specified Employee ID: " + employee.getEmployeeId());
+	  }
+	  return employee.getEmployeeId();
   }
 
   @Override
-  public io.zolontech.imagemanager.Employee getEmployeeById(io.zolontech.imagemanager.Employee employeeId) {
-    // TODO: Auto-generated code;
-    return null;
+  public io.zolontech.imagemanager.Employee getEmployeeById(String employeeId) {
+	  Employee employee = employees.get(employeeId);
+	  if (employee == null) {
+		  throw new RuntimeException("Employee does not exist with the specified Employee ID: " + employeeId);
+	  }
+    return employee;
   }
 }
